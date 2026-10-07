@@ -14,7 +14,7 @@ from calculs import (STRATEGIES, STRESS_WINDOWS, indicators, quality_score, risk
                      explain_asset, portfolio_checks, explain_portfolio)
 from universe import UNIVERSE, CORE_CATEGORY, EXAMPLE_AMOUNTS, currency_of, fx_pair
 
-TITLE = "Terminal Eléonore ROUZIER"
+TITLE = "Terminal - Main"
 st.set_page_config(page_title=TITLE, page_icon="📊", layout="wide")
 
 # ============================================================ SIDEBAR

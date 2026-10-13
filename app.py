@@ -12,15 +12,17 @@ from calculs import (STRATEGIES, STRESS_WINDOWS, indicators, quality_score, risk
                      param_sweep, to_eur, drawdown_episodes, portfolio_risk_report, concentration,
                      stress_test, monte_carlo, risk_label, risk_score_from, RISK_LEVEL_GUIDE,
                      explain_asset, portfolio_checks, explain_portfolio)
-from universe import UNIVERSE, CORE_CATEGORY, EXAMPLE_AMOUNTS, currency_of, fx_pair
+from universe import UNIVERSE, CORE_CATEGORIES, OPTIONAL_CATEGORIES, EXAMPLE_AMOUNTS, currency_of, fx_pair
 
-TITLE = "Terminal - Main"
+TITLE = "Terminal Eléonore ROUZIER"
 st.set_page_config(page_title=TITLE, page_icon="📊", layout="wide")
 
 # ============================================================ SIDEBAR
 st.sidebar.header("⚙️ Settings")
-categories = st.sidebar.multiselect("Categories", list(UNIVERSE.keys()), default=list(UNIVERSE.keys()),
-                                    help="Fewer categories = faster loading.")
+categories = st.sidebar.multiselect("Categories", list(UNIVERSE.keys()),
+                                    default=[c for c in UNIVERSE if c not in OPTIONAL_CATEGORIES],
+                                    help="Fewer categories = faster loading. 'Bonds & cash ETFs' is optional: "
+                                         "tick it to add a calm base (bonds, money market) to compare with.")
 extra = st.sidebar.text_input("Add tickers (comma-separated)", placeholder="e.g. SHEL.AS, VWCE.DE")
 period = st.sidebar.selectbox("History", ["1y", "2y", "5y", "10y", "max"], index=2)
 profile = st.sidebar.radio("Risk profile", ["Cautious", "Balanced", "Dynamic"], index=1,
@@ -773,7 +775,7 @@ with t_prisk:
                 st.markdown("**Your own what-if:** an instant fall, without any diversification effect.")
                 cats_held = sorted({category[n] for n in held})
                 sel_cats = st.multiselect("Categories hit by the shock", cats_held,
-                                          default=[c_ for c_ in cats_held if c_ != CORE_CATEGORY], key="whatif_cats")
+                                          default=[c_ for c_ in cats_held if c_ not in CORE_CATEGORIES], key="whatif_cats")
                 shock = st.slider("Price fall on these categories (%)", -60, 0, -20, key="whatif_shock")
                 loss = sum(float(amounts[n]) for n in held if category[n] in sel_cats) * shock / 100
                 st.metric("Estimated loss", f"{loss:,.0f} €", f"{loss / total:.1%} of your portfolio", delta_color="off")
@@ -809,8 +811,8 @@ with t_prisk:
 # ---------------------------------------------------------------- 8. Core vs themes
 with t_core:
     st.subheader("Simulate a split between safe core and thematic assets")
-    core_all = [n for n in cours if category[n] == CORE_CATEGORY]
-    theme_all = [n for n in cours if category[n] != CORE_CATEGORY]
+    core_all = [n for n in cours if category[n] in CORE_CATEGORIES]
+    theme_all = [n for n in cours if category[n] not in CORE_CATEGORIES]
     total = float(amounts.sum())
     if total <= 0:
         st.info("Enter your amounts in the 💼 Portfolio tab first.")

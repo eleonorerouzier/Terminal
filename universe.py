@@ -2,62 +2,56 @@
 Prices are in each asset's local currency. Always double-check a ticker on finance.yahoo.com."""
 
 UNIVERSE = {
-    "Asian cars": {
-        "Toyota": "7203.T", "Hyundai": "005380.KS", "BYD": "1211.HK",
-    },
     "Sport / Running / Fitness": {
-        "On Holding": "ONON", "Amer Sports": "AS", "ASICS": "7936.T", "Adidas": "ADS.DE",
-        "Garmin": "GRMN", "Planet Fitness": "PLNT", "Basic-Fit": "BFIT.AS",
-        "Technogym": "TGYM.MI", "Lululemon": "LULU", "Deckers (HOKA)": "DECK",
+        "ASICS (ADR)": "ASCCY", "Garmin": "GRMN", "On Holding": "ONON", "Adidas": "ADS.DE",
+        "Technogym": "TGYM.MI", "Nike": "NKE", "Puma": "PUM.DE",
     },
-    "Tech / AI / Semiconductors": {
-        "Nvidia": "NVDA", "Microsoft": "MSFT", "Alphabet": "GOOGL", "Broadcom": "AVGO",
-        "TSMC": "TSM", "ASML": "ASML", "Meta": "META", "Amazon": "AMZN",
-        "Palantir": "PLTR", "AMD": "AMD", "SAP": "SAP", "Oracle": "ORCL",
+    "Cars": {
+        "Hyundai": "005380.KS", "Kia": "000270.KS", "Toyota (and Lexus)": "7203.T", "Honda": "7267.T",
+        "Mazda": "7261.T", "Suzuki": "7269.T", "BYD": "1211.HK", "Geely Automobile (Lynk & Co)": "0175.HK",
+        "Leapmotor": "9863.HK", "Great Wall Motor": "2333.HK", "Li Auto": "LI", "Xpeng": "XPEV",
+        "SAIC Motor (MG)": "600104.SS", "Ferrari": "RACE",
     },
-    "Health / Pharma / Medtech": {
-        "Eli Lilly": "LLY", "Novo Nordisk": "NVO", "Novartis": "NVS", "Roche": "ROG.SW",
-        "AstraZeneca": "AZN", "Sanofi": "SAN.PA", "Intuitive Surgical": "ISRG",
-        "Vertex": "VRTX", "Thermo Fisher": "TMO",
+    "Industrials / Defense / Energy": {
+        "Siemens": "SIE.DE", "Safran": "SAF.PA", "Thales": "HO.PA", "Airbus": "AIR.PA",
+        "Rheinmetall": "RHM.DE", "Dassault Aviation": "AM.PA", "Schneider Electric": "SU.PA",
+        "TotalEnergies": "TTE.PA", "Air Liquide": "AI.PA",
     },
-    "Energy / Transition / Utilities": {
-        "NextEra Energy": "NEE", "Iberdrola": "IBE.MC", "Enel": "ENEL.MI",
-        "Schneider Electric": "SU.PA", "Siemens Energy": "ENR.DE", "Vestas": "VWS.CO",
-        "First Solar": "FSLR", "TotalEnergies": "TTE.PA", "Exxon Mobil": "XOM",
-        "Brent crude (futures)": "BZ=F",
+    "Health / Pharma": {
+        "Eli Lilly": "LLY", "Pfizer": "PFE", "Sanofi (ADR)": "SNY",
     },
-    "Finance / Payments / Insurance": {
-        "JPMorgan": "JPM", "Visa": "V", "Mastercard": "MA", "Goldman Sachs": "GS",
-        "Berkshire Hathaway": "BRK-B", "BNP Paribas": "BNP.PA", "AXA": "CS.PA", "Allianz": "ALV.DE",
+    "Tech / Semiconductors / Media": {
+        "Microsoft": "MSFT", "Apple": "AAPL", "Alphabet": "GOOGL", "Nvidia": "NVDA", "ASML": "ASML",
+        "TSMC": "TSM", "Intel": "INTC", "Netflix": "NFLX",
     },
-    "Luxury / Consumer": {
-        "LVMH": "MC.PA", "Hermès": "RMS.PA", "L'Oréal": "OR.PA", "Ferrari": "RACE",
-        "Nestlé": "NESN.SW", "Procter & Gamble": "PG", "Costco": "COST", "Walmart": "WMT",
+    "Finance / Payments": {
+        "Mastercard": "MA", "Visa": "V", "JPMorgan": "JPM", "SoFi": "SOFI", "Webull": "BULL",
     },
-    "Industrials / Aerospace / Defense": {
-        "Safran": "SAF.PA", "Airbus": "AIR.PA", "Thales": "HO.PA", "Rheinmetall": "RHM.DE",
-        "Siemens": "SIE.DE", "GE Aerospace": "GE", "Caterpillar": "CAT",
+    "Defensive / Dividend": {
+        "Berkshire Hathaway": "BRK-B", "Procter & Gamble": "PG", "Nestlé": "NESN.SW",
+        "Johnson & Johnson": "JNJ", "Coca-Cola": "KO",
     },
-    "Materials / Gold / Chemicals": {
-        "Air Liquide": "AI.PA", "Linde": "LIN", "Newmont": "NEM", "Agnico Eagle": "AEM",
-        "Freeport-McMoRan": "FCX", "BHP": "BHP", "Rio Tinto": "RIO",
+    "Income funds & REITs": {
+        "BlackRock Capital Allocation Trust": "BCAT", "Blackstone Mortgage Trust": "BXMT",
+        "Goldman Sachs BDC": "GSBD",
     },
-    "Emerging markets": {
-        "Alibaba": "BABA", "Tencent": "0700.HK", "MercadoLibre": "MELI",
-        "Samsung Electronics": "005930.KS", "Reliance Industries": "RELIANCE.NS", "HDFC Bank": "HDB",
+    "Core ETFs": {
+        "MSCI World ETF": "IWDA.AS", "FTSE All-World ETF": "VWCE.DE",
     },
-    "Core (safe ETFs)": {
-        "MSCI World ETF": "IWDA.AS", "Euro government bonds ETF": "IEGA.AS",
-        "Euro money market ETF": "XEON.DE",
+    "Bonds & cash ETFs": {
+        "Euro government bonds ETF": "IEGA.AS", "Euro money market ETF": "XEON.DE",
     },
 }
 
-CORE_CATEGORY = "Core (safe ETFs)"
+# Categories treated as the calm "core" in the Core vs themes tab and in the what-if shock default
+CORE_CATEGORIES = {"Core ETFs", "Bonds & cash ETFs"}
+# Categories available in the sidebar but NOT selected by default
+OPTIONAL_CATEGORIES = {"Bonds & cash ETFs"}
 
 # Example amounts (EUR) pre-filled in the Portfolio tab: replace them with your own in the app.
 EXAMPLE_AMOUNTS = {
-    "MSCI World ETF": 4000, "Euro government bonds ETF": 2000, "Euro money market ETF": 1000,
-    "Toyota": 500, "Adidas": 250, "ASICS": 250, "TotalEnergies": 250,
+    "Microsoft": 500, "Mastercard": 500, "Toyota (and Lexus)": 500,
+    "Garmin": 250, "Air Liquide": 250, "Eli Lilly": 250,
 }
 
 
